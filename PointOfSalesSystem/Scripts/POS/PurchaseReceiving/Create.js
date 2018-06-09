@@ -34,8 +34,9 @@
 $("#addButton").click(function () {
 
 
-        var selectedItem = getSelectedItem();
+    var selectedItem = getSelectedItem();
     createRowForPurchaseDetails(selectedItem);
+    returnGrandTotal(selectedItem);
     $("#Item").val("");
     $("#Quantity").val("");
     $("#PurchasePrice").val("");
@@ -43,6 +44,11 @@ $("#addButton").click(function () {
     });
 });
 
+
+function returnGrandTotal(selectedItem) {
+    var GrandTotal = GrandTotal + selectedItem.LiveTotal;
+    alert(GrandTotal);
+}
 
 function createRowForPurchaseDetails(selectedItem) {
     index = $("#purchaseTable").children("tr").length;
@@ -52,8 +58,8 @@ function createRowForPurchaseDetails(selectedItem) {
     var Quantity = "<td><input type='hidden' name='PurchaseReceivingDetailses[" + index + "].Quantity' value='" + selectedItem.Quantity + "'/>" + selectedItem.Quantity + "</td>"
     var Price = "<td><input type='hidden' name='PurchaseReceivingDetailses[" + index + "].PurchasePrice' value='" + selectedItem.Price + "'/>" + selectedItem.Price + "</td>"
     var LiveTotal = "<td><input type='hidden' name='PurchaseReceivingDetailses[" + index + "].PurchaseItemTotalPrice' value='" + selectedItem.LiveTotal + "'/>" + selectedItem.LiveTotal + "</td>"
-    var ActionLink ="<td>Incomplete</td>"
-
+    var ActionLink = "<td>Incomplete</td>"
+   
     var row = "<tr>" + IndexCell + Item + Quantity + Price + LiveTotal + ActionLink + "</tr>";
 
     
@@ -66,7 +72,7 @@ function getSelectedItem() {
     var Quantity = $("#Quantity").val();
     var Price = $("#PurchasePrice").val();
     var LiveTotal = $("#PurchasePrice").val() * $("#Quantity").val();
-
+   
     var model = {
         "ItemId": ItemId,
         "ItemName": ItemName,

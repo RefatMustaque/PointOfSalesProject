@@ -4,7 +4,7 @@
 
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Purchase Receving";
 }
 
 <h2>Create</h2>
@@ -104,29 +104,41 @@
 
             @foreach (Item Item in Model.ChildItems)
             {
-                <tr>
-                    <td>@(++Sl)</td>
+                if(Item.ItemCategoryId == null)
+                {
+                    <h1>Nothing to show</h1>
+                }
+                else
+                {
+
+            <tr>
+                <td>@(++Sl)</td>
 
 
-                    <td>
-                        @((from p in Model.ItemCategories
-                                   where p.Id
-                                   == Item.ItemCategoryId
-                                   select new { p.Name }).First())
-                    </td>
+
+                <td>
+                    @((from p in Model.ItemCategories
+                               where p.Id
+                               == Item.ItemCategoryId
+                               select new { p.Name }).First())
+                </td>
 
 
-                    <td>@Item.Name</td>
-                    <td>@Item.ItemCode</td>
-                    <td>@Item.Description</td>
-                    <td>@Item.CostsPrice </td>
-                    <td>@Item.SalesPrice</td>
-                    <td>Action</td>
-                </tr>
+
+
+                <td>@Item.Name</td>
+                <td>@Item.ItemCode</td>
+                <td>@Item.Description</td>
+                <td>@Item.CostsPrice </td>
+                <td>@Item.SalesPrice</td>
+                <td>Action</td>
+            </tr>
+            }
+                
             }
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 </div>
 
 }

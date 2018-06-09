@@ -100,7 +100,7 @@ namespace POS.Repository.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         PurchaseNumber = c.Int(nullable: false),
-                        PurchaseDate = c.String(),
+                        PurchaseDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                         PurchaseTotalAmount = c.Long(nullable: false),
                         BranchId = c.Int(nullable: false),

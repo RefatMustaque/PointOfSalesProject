@@ -18,6 +18,7 @@ namespace PointOfSalesSystem.Controllers
         ItemManager _itemManager = new ItemManager(); //item Manager for dropdown
         PurchaseReceivingDetailsManager _PurchaseReceivingDetailsManager = new PurchaseReceivingDetailsManager();
         StockManager _stockManager = new StockManager();
+        PartyManager _partyManager = new PartyManager();
         // GET: PurchaseReceiving
         public ActionResult Index()
         {
@@ -40,6 +41,7 @@ namespace PointOfSalesSystem.Controllers
             model.Branches = branch;
             var employeeInfo = _employeeInfoManager.GetAll();
             model.EmployeeInfoes = employeeInfo;
+            model.Parties = _partyManager.Get(c=>c.PartyType=="Supplier");
 
             ViewBag.EmployeeInfoId = new List<SelectListItem>()
             {

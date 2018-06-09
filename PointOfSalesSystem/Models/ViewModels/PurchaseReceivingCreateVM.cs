@@ -15,7 +15,8 @@ namespace PointOfSalesSystem.Models.ViewModels
         [Display(Name = "Purchase No")]
         public int PurchaseNumber { get; set; }
         [Display(Name = "Purchase Date")]
-        public string PurchaseDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime PurchaseDate { get; set; }
         
         public string Remarks { get; set; }
         [Display(Name = "Purchase Total Amount")]
@@ -32,6 +33,7 @@ namespace PointOfSalesSystem.Models.ViewModels
 
         [Display(Name = "Supplier")]
         //Supplier Refered
+        [Required(ErrorMessage = "Supplier Information is required")]
         public int? PartyId { get; set; }
         public List<Party> Parties { get; set; }
 
