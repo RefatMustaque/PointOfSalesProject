@@ -26,7 +26,8 @@ namespace PointOfSalesSystem.Models.ViewModels
 
         [Display(Name = "Branch")]
         //Branch Refered
-        public int? BranchId { get; set; }
+        [Required(ErrorMessage = "Branch Information is required")]
+        public int BranchId { get; set; }
         public List<Branch> Branches { get; set; }
 
         [Display(Name = "Supplier")]
@@ -37,6 +38,7 @@ namespace PointOfSalesSystem.Models.ViewModels
 
         [Display(Name = "Employee")]
         //Employee Refered
+        [Required(ErrorMessage = "Employee Information is required")]
         public int? EmployeeInfoId { get; set; }
         public List<EmployeeInfo> EmployeeInfoes { get; set; }
 

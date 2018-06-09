@@ -44,7 +44,6 @@ namespace PointOfSalesSystem.Controllers
             ViewBag.EmployeeInfoId = new List<SelectListItem>()
             {
                 new SelectListItem(){ Value="",Text="Select" }
-
             };
 
             return View(model);
@@ -58,17 +57,8 @@ namespace PointOfSalesSystem.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
-                    foreach (PurchaseReceivingDetails purchaseReceivingDetails in model.PurchaseReceivingDetailses)
-                    {
-                        var Stock = _stockManager.GetFirstOrDefault();
-                        //Stock.AvgPrice = (Stock.StockQuantity * Stock.AvgPrice + purchaseReceivingDetails.Quantity * purchaseReceivingDetails.PurchasePrice) / (Stock.StockQuantity + purchaseReceivingDetails.Quantity);
-                        //Stock.StockQuantity = Stock.StockQuantity + purchaseReceivingDetails.Quantity;
-                        //Stock.ItemId = purchaseReceivingDetails.ItemId;
-                    }
 
-                    //var MappedStock = Mapper.Map<Stock>(Stock);
-                    //bool StockIsSaved = _stockManager.Save(MappedStock);
+                    _stockManager.UpdateStockWithPurchaseReceiving(model.PurchaseReceivingDetailses, model.BranchId);
                     var purchaseReceiving = Mapper.Map<PurchaseReceiving>(model);
                     bool isSaved = _purchaseReceivingManager.Save(purchaseReceiving);
                     if (isSaved)
@@ -143,6 +133,36 @@ namespace PointOfSalesSystem.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public void UpdateStockWithNewPurchaseReceiving(List<PurchaseReceivingDetails> PurchaseReceivingDetailses, int PurchaseReceivingBranchId)
+        {
+            foreach (PurchaseReceivingDetails purchaseReceivingDetails in PurchaseReceivingDetailses)
+            {
+                var ExistingStock = _stockManager.GetFirstOrDefault(c => c.ItemId == purchaseReceivingDetails.ItemId && c.BranchId == PurchaseReceivingBranchId);
+                if (ExistingStock == null)
+                {
+                    var Stock = new StockCreateVM();
+                    Stock.AvgPrice = (Stock.StockQuantity * Stock.AvgPrice + purchaseReceivingDetails.Quantity * purchaseReceivingDetails.PurchasePrice) / (Stock.StockQuantity + purchaseReceivingDetails.Quantity);
+                    Stock.StockQuantity = Stock.StockQuantity + purchaseReceivingDetails.Quantity;
+                    Stock.ItemId = purchaseReceivingDetails.ItemId;
+                    Stock.BranchId = PurchaseReceivingBranchId;
+                    Stock.CategoryFullPath = "Does not exist";
+                    var MappedStock = Mapper.Map<Stock>(Stock);
+                    bool StockIsSaved = _stockManager.Save(MappedStock);
+                }
+
+                else
+                {
+                    ExistingStock.AvgPrice = (ExistingStock.StockQuantity * ExistingStock.AvgPrice + purchaseReceivingDetails.Quantity * purchaseReceivingDetails.PurchasePrice) / (ExistingStock.StockQuantity + purchaseReceivingDetails.Quantity);
+                    ExistingStock.StockQuantity = ExistingStock.StockQuantity + purchaseReceivingDetails.Quantity;
+                    ExistingStock.CategoryFullPath = "Exist";
+                    var MappedStock = Mapper.Map<Stock>(ExistingStock);
+                    bool StockIsSaved = _stockManager.Update(MappedStock);
+                }
+                
+
             }
         }
     }
