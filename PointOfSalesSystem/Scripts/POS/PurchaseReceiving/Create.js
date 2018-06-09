@@ -14,7 +14,7 @@
             success: function (response) {
                 var employeeDD = $("#EmployeeInfoId");
                 employeeDD.empty();
-                var option = "<option value>--Select..</option>";
+                var option = "<option value>Select . . .</option>";
 
                 $.each(response, function (key, employee) {
                     option += "<option value='" + employee.Id + "'>" + employee.Code + "--" + employee.Name + "</option>";
@@ -35,7 +35,10 @@ $("#addButton").click(function () {
 
 
         var selectedItem = getSelectedItem();
-        createRowForPurchaseDetails(selectedItem);
+    createRowForPurchaseDetails(selectedItem);
+    $("#Item").val("");
+    $("#Quantity").val("");
+    $("#PurchasePrice").val("");
 
     });
 });
