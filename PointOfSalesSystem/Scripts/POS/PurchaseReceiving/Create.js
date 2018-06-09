@@ -17,7 +17,7 @@
                 var option = "<option value>Select . . .</option>";
 
                 $.each(response, function (key, employee) {
-                    option += "<option value='" + employee.Id + "'>" + employee.Code + "--" + employee.Name + "</option>";
+                    option += "<option value='" + employee.Id + "'>" + employee.Name + "</option>";
 
                 });
                 employeeDD.append(option);
