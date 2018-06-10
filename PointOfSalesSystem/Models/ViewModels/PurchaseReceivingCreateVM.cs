@@ -20,7 +20,7 @@ namespace PointOfSalesSystem.Models.ViewModels
         
         public string Remarks { get; set; }
         [Display(Name = "Purchase Total Amount")]
-        public long PurchaseTotalAmount { get; set; }
+        public double PurchaseTotalAmount { get; set; }
 
         
         public List<Item> Items { get; set; }

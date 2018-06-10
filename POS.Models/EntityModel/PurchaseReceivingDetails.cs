@@ -11,9 +11,9 @@ namespace POS.Models.EntityModel
     {
         public int Id { get; set; }
         [Display(Name ="Price")]
-        public int PurchasePrice { get; set; }
+        public double PurchasePrice { get; set; }
         public int Quantity { get; set; }
-        public int PurchaseItemTotalPrice { get; set; }
+        public double PurchaseItemTotalPrice { get; set; }
 
         public int? PurchaseReceivingId { get; set; }
         public PurchaseReceiving PurchaseReceiving { get; set; }

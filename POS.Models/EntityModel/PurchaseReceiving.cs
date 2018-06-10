@@ -12,7 +12,7 @@ namespace POS.Models.EntityModel
         public int PurchaseNumber { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string Remarks { get; set; }
-        public long PurchaseTotalAmount { get; set; }
+        public Double PurchaseTotalAmount { get; set; }
 
         
         

@@ -82,6 +82,7 @@ namespace PointOfSalesSystem.Controllers
                 model.Branches = branchList;
                 var employeeInfoList = _employeeInfoManager.GetAll();
                 model.EmployeeInfoes = employeeInfoList;
+                model.Parties = _partyManager.Get(c => c.PartyType == "Supplier");
                 return View(model);
             }
 
@@ -91,6 +92,7 @@ namespace PointOfSalesSystem.Controllers
             model.Branches = branch;
             var employeeInfo = _employeeInfoManager.GetAll();
             model.EmployeeInfoes = employeeInfo;
+            model.Parties = _partyManager.Get(c => c.PartyType == "Supplier");
             return View(model);
         }
 
