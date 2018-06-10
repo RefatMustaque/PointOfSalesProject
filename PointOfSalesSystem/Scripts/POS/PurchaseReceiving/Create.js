@@ -43,7 +43,7 @@ var GrandTotal = 0;
 
 function creatGrandTotal(selectedItem) {
     GrandTotal = GrandTotal + selectedItem.LiveTotal;
-    var GrandTotalColumn = "<input type='hidden' for='PurchaseTotalAmount' id='PurchaseTotalAmount' name='PurchaseTotalAmount' value='" + GrandTotal + "'/>" + GrandTotal;
+    var GrandTotalColumn = "<td><input type='hidden' for='PurchaseTotalAmount' id='PurchaseTotalAmount' name='PurchaseTotalAmount' value='" + GrandTotal + "'/>" + GrandTotal + "</td><td></td>";
     $("#grandTotal").html(GrandTotalColumn);
 }
 
