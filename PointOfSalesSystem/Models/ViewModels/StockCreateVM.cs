@@ -7,6 +7,7 @@ namespace PointOfSalesSystem.Models.ViewModels
 {
     public class StockCreateVM
     {
+        public int Id { get; set; }
         public int StockQuantity { get; set; }
 
         public double AvgPrice { get; set; }

@@ -228,6 +228,7 @@
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\PurchaseReceivingController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\StockReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +267,7 @@
     <Content Include="Views\Sales\Create.cshtml" />
     <Content Include="Views\Expenses\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\StockReport\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
