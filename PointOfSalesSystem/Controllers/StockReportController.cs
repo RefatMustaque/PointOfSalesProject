@@ -1,4 +1,6 @@
-﻿using POS.BLL.ManagerRepositories;
+﻿using AutoMapper;
+using PointOfSalesSystem.Models.ViewModels;
+using POS.BLL.ManagerRepositories;
 using System.Web.Mvc;
 
 namespace PointOfSalesSystem.Controllers
@@ -11,6 +13,9 @@ namespace PointOfSalesSystem.Controllers
         // GET: StockReport
         public ActionResult Index()
         {
+			//var stock = _stockManager.GetAll();
+			//StockReadVM model = new StockReadVM();
+			//model.StockCreateVMs = Mapper.Map<IList<StockCreateVM>>(stock);
             var model = _stockManager.GetAll();
 
             return View(model);

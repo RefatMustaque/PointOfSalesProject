@@ -20,38 +20,27 @@ namespace PointOfSalesSystem
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<ItemCategoryCreateVM, ItemCategory>();
-                cfg.CreateMap<ItemCategory, ItemCategoryCreateVM>();
-
+                
                 cfg.CreateMap<OrganizationsCreateVM, Organizations>();
-                cfg.CreateMap<Organizations, OrganizationsCreateVM>();
-
+                
                 cfg.CreateMap<BranchesCreateVM, Branch>();
-                cfg.CreateMap<Branch, BranchesCreateVM>();
-
+                
                 cfg.CreateMap<ItemCreateVM, Item>();
-                cfg.CreateMap<Item, ItemCreateVM>();
-
+                
                 cfg.CreateMap<ExpenseCategoryCreateVM, ExpenseCategory>();
-                cfg.CreateMap<ExpenseCategory, ExpenseCategoryCreateVM>();
-
+                
                 cfg.CreateMap<ExpenseItemCreateVM, ExpenseItem>();
-                cfg.CreateMap<ExpenseItem, ExpenseItemCreateVM>();
-
+                
                 cfg.CreateMap<PartyCreateVM, Party>();
-                cfg.CreateMap<Party, PartyCreateVM>();
-
+                
                 cfg.CreateMap<PurchaseReceivingCreateVM, PurchaseReceiving>();
-                cfg.CreateMap<PurchaseReceiving, PurchaseReceivingCreateVM>();
-
+                
                 cfg.CreateMap<EmployeeInfoCreateVM, EmployeeInfo>();
-                cfg.CreateMap<EmployeeInfo, EmployeeInfoCreateVM>();
-
+                
                 cfg.CreateMap<SalesCreateVM, Sales>();
-                cfg.CreateMap<Sales, SalesCreateVM>();
-
+                
                 cfg.CreateMap<ExpenseCreateVM, Expense>();
-                cfg.CreateMap<Expense, ExpenseCreateVM>();
-
+                
                 cfg.CreateMap<StockCreateVM, Stock>();
                 cfg.CreateMap<Stock, StockCreateVM>();
 

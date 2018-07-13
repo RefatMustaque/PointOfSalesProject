@@ -6,6 +6,14 @@
 
 <h2 class="text-primary">Stock Report</h2>
 
+@*<div class="form-group">
+    @Html.LabelFor(model => model.BranchId, htmlAttributes: new { @class = "control-label col-md-5" })
+    <div class="col-md-7">
+        @Html.DropDownListFor(model => model.BranchId, new SelectList(Model.Branches, "Id", "Name"), "Select . . .", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+    </div>
+</div>*@
+
 
 <table class="table">
     <tr>
